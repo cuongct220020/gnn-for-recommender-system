@@ -1,1 +1,1 @@
-Research project on applying GNN in recommendation system
+**Research and evaluate GNN-based CF models with traditional models. The entire process of problem analysis, data collection, exploration, preprocessing, model training and evaluation is presented in the report file above. You can view the slides to grasp the content more concisely.**
