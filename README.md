@@ -19,7 +19,7 @@ This project explores the application of **Graph Neural Networks (GNNs)** for bu
 
 ## 🚀 How to Run
 
-1. Open any notebook in this repo (e.g., `data_preprocessing.ipynb`, `train_mf_neumf.ipynb`, etc.) in **Google Colab**.
+1. Open any notebook in this repo (e.g., `LightGCN_Full_Corpus.ipynb`, `LightGCN_Leave_One_Last.ipynb`, etc.) in **Google Colab**.
 2. Go to **Runtime → Change runtime type → Hardware accelerator: GPU**.
 3. Run all cells sequentially. Dependencies will be installed automatically.
 4. Processed data is saved in the `data/` folder and reused across notebooks.
@@ -33,8 +33,8 @@ Starting from `recommendations.csv` (41M interactions), we applied:
    - Most games have few reviews; a few are extremely popular (long-tail distribution).
    - Positive recommendations dominate (~85%).
 3. **Outlier filtering**:
-   - Keep only **games** with ≥1,000 reviews and released between **2009–2023**.
-   - Keep only **users** with ≥30 reviews and at least one positive + one negative rating in the train set.
+   - Keep only **games** with ≥ 1,000 reviews and released between **2009–2023**.
+   - Keep only **users** with ≥ 30 reviews and at least one positive + one negative rating in the train set.
 4. **Feature transformation**:
    - Convert `is_recommended` to binary (1/0).
    - Apply `log10(1 + hours)` to reduce skewness in playtime.
