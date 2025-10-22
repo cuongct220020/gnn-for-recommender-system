@@ -1,4 +1,4 @@
-# Applying GNNs to Steam Game Recommendation
+# GNNs for Steam Game Recommendation
 
 > **IT3930 - Project II – Hanoi University of Science and Technology**
 
