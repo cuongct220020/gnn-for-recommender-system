@@ -1,4 +1,4 @@
-# Applying Graph Neural Networks to Steam Game Recommendation
+# Applying GNNs to Steam Game Recommendation
 
 > **Project II – Hanoi University of Science and Technology**
 
@@ -46,12 +46,37 @@ Final dataset: **2.53M interactions**, **99.1% sparsity**.
 
 All models use **BPR loss** and are optimized with **Adam**:
 
-| Model       | Type                     | Key Idea |
-|-------------|--------------------------|--------|
-| **MF-BPR**  | Matrix Factorization     | Learns linear user/item embeddings via dot product. |
-| **NeuMF**   | Neural MF                | Combines GMF (linear) + MLP (non-linear) for richer interaction modeling. |
-| **NGCF**    | GNN-based CF             | Uses message passing with self-connections, linear transforms, and nonlinear activation. |
-| **LightGCN**| Simplified NGCF          | Removes self-loops, feature transforms, and nonlinearities — only neighborhood aggregation remains. |
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Type</th>
+      <th>Key Idea</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MF-BPR</strong></td>
+      <td>Matrix Factorization</td>
+      <td>Learns linear user/item embeddings via dot product.</td>
+    </tr>
+    <tr>
+      <td><strong>NeuMF</strong></td>
+      <td>Neural MF</td>
+      <td>Combines GMF (linear) + MLP (non-linear) for richer interaction modeling.</td>
+    </tr>
+    <tr>
+      <td><strong>NGCF</strong></td>
+      <td>GNN-based CF</td>
+      <td>Uses message passing with self-connections, linear transforms, and nonlinear activation.</td>
+    </tr>
+    <tr>
+      <td><strong>LightGCN</strong></td>
+      <td>Simplified NGCF</td>
+      <td>Removes self-loops, feature transforms, and nonlinearities — only neighborhood aggregation remains.</td>
+    </tr>
+  </tbody>
+</table>
 
 **Shared hyperparameters**:
 - `embedding_dim = 64`
@@ -78,16 +103,66 @@ We evaluate using **top-10 metrics**: Precision@10, Recall@10, NDCG@10, HitRate@
 
 ## 📈 Results
 
-| Model      | Full-corpus                     | Leave-one-last          |
-|------------|----------------------------------|--------------------------|
-|            | Prec@10 | Rec@10 | NDCG@10 | Hit@10 | NDCG@10 | Hit@10 |
-| **MF-BPR** | 0.0111  | 0.0123 | 0.0143  | 0.0927 | 0.1614  | 0.3151 |
-| **NeuMF**  | 0.0127  | 0.0140 | 0.0161  | 0.1029 | 0.1655  | 0.3146 |
-| **NGCF**   | 0.0244  | 0.0281 | 0.0315  | 0.1837 | **0.2685** | **0.5165** |
-| **LightGCN**| **0.0256** | **0.0298** | **0.0331** | **0.1906** | 0.2681 | 0.5069 |
+Below are the evaluation results on both strategies. All scores are reported as mean values over multiple runs.
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th colspan="4" style="text-align: center;">Full-corpus Metrics</th>
+      <th colspan="2" style="text-align: center;">Leave-one-last Metrics</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Prec@10</th>
+      <th>Rec@10</th>
+      <th>NDCG@10</th>
+      <th>Hit@10</th>
+      <th>NDCG@10</th>
+      <th>Hit@10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MF-BPR</strong></td>
+      <td>0.0111</td>
+      <td>0.0123</td>
+      <td>0.0143</td>
+      <td>0.0927</td>
+      <td>0.1614</td>
+      <td>0.3151</td>
+    </tr>
+    <tr>
+      <td><strong>NeuMF</strong></td>
+      <td>0.0127</td>
+      <td>0.0140</td>
+      <td>0.0161</td>
+      <td>0.1029</td>
+      <td>0.1655</td>
+      <td>0.3146</td>
+    </tr>
+    <tr>
+      <td><strong>NGCF</strong></td>
+      <td>0.0244</td>
+      <td>0.0281</td>
+      <td>0.0315</td>
+      <td>0.1837</td>
+      <td><strong>0.2685</strong></td>
+      <td><strong>0.5165</strong></td>
+    </tr>
+    <tr>
+      <td><strong>LightGCN</strong></td>
+      <td><strong>0.0256</strong></td>
+      <td><strong>0.0298</strong></td>
+      <td><strong>0.0331</strong></td>
+      <td><strong>0.1906</strong></td>
+      <td>0.2681</td>
+      <td>0.5069</td>
+    </tr>
+  </tbody>
+</table>
 
-**Key Insight**:  
-GNN-based models (**NGCF**, **LightGCN**) significantly outperform traditional CF methods. **LightGCN** achieves the best performance on **Full-corpus**, indicating stronger generalization in real-world settings.
+> **Key Insight**:  
+> GNN-based models (**NGCF**, **LightGCN**) significantly outperform traditional CF methods. **LightGCN** achieves the best performance on **Full-corpus**, indicating stronger generalization in real-world settings.
 
 ## 📚 Full Report
 
