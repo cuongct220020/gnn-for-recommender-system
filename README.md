@@ -1,6 +1,6 @@
 # Applying GNNs to Steam Game Recommendation
 
-> **Project II – Hanoi University of Science and Technology**
+> **IT3930 - Project II – Hanoi University of Science and Technology**
 
 
 ## 📌 Overview
@@ -171,4 +171,8 @@ For detailed methodology, architecture diagrams, hyperparameter tuning, and anal
 
 > 🔮 **Future Work**: Explore **UltraGCN**, which eliminates explicit message-passing layers and directly optimizes embeddings via ranking and constraint losses.
 
-Happy experimenting! 🎮
+## 📝 License
+Educational purpose
+
+## 👨‍💻 Author
+[@cuongct220020](https://github.com/cuongct220020)
